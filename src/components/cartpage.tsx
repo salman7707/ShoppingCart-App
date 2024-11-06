@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import state from './types/state'
 import { getCartTotal, removeItem, increaseQuantity, decreaseQuantity } from '@/lib/store/features/cartslice/cartslice'
 
-export default function cartpage() {
+export default function Cartpage() {
     const {cart,totalPrice,totalQuantity} = useSelector((state:{allcart:state})=>state.allcart)
     const dispatch = useDispatch()
     useEffect( () =>{
