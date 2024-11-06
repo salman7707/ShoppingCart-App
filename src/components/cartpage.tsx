@@ -9,7 +9,7 @@ export default function Cartpage() {
     const dispatch = useDispatch()
     useEffect( () =>{
         dispatch(getCartTotal())
-    }, [cart])
+    }, [dispatch,cart])
   return (
     <section className="h-100 gradient-custom">
     <div className="container py-5">
