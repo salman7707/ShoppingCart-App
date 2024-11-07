@@ -1,156 +1,120 @@
-"use client"
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import state from './types/state'
-import { getCartTotal, removeItem, increaseQuantity, decreaseQuantity } from '@/lib/store/features/cartslice/cartslice'
+"use client";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import state from "./types/state";
+import { MdDelete } from "react-icons/md";
+import { TiMinus } from "react-icons/ti";
+import { FaPlus } from "react-icons/fa";
+import {
+  getCartTotal,
+  removeItem,
+  increaseQuantity,
+  decreaseQuantity,
+} from "@/lib/store/features/cartslice/cartslice";
 
 export default function Cartpage() {
-    const {cart,totalPrice,totalQuantity} = useSelector((state:{allcart:state})=>state.allcart)
-    const dispatch = useDispatch()
-    useEffect( () =>{
-        dispatch(getCartTotal())
-    }, [dispatch,cart])
+  const { cart, totalPrice, totalQuantity } = useSelector(
+    (state: { allcart: state }) => state.allcart
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [dispatch, cart]);
   return (
-    <section className="h-100 gradient-custom">
-    <div className="container py-5">
-      <div className="row d-flex justify-content-center my-4">
-        <div className="col-md-8">
-          <div className="card mb-4">
-            <div className="card-header py-3">
-              <h5 className="mb-0">Cart - {cart.length} items</h5>
-            </div>
-            <div className="card-body">
-              {cart.map((item, key) => (
-                <div key={key} className="row">
-                  <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                    <div
-                      className="bg-image hover-overlay hover-zoom ripple rounded"
-                      data-mdb-ripple-color="light"
-                    >
-                      <img
-                        src={item.img}
-                        className="w-100"
-                        alt="Blue Jeans Jacket"
-                      />
-                      <a href="#!">
-                        <div
-                          className="mask"
-                          style={{
-                            backgroundColor: "rgba(251, 251, 251, 0.2)",
-                          }}
-                        ></div>
-                      </a>
-                    </div>
-                  </div>
+    <section className="">
+      <div className="flex w-full p-4 space-x-4">
+        <div className="rounded-lg bg-white w-[50%]">
+            <h5 className="text-xl px-4 py-4 font-bold text-gray-800">
+              Cart - {cart.length} items
+            </h5>
+          <div className="">
+            {cart.map((item, key) => (
+              <div
+                key={key}
+                className="w-full flex items-start justify-between"
+              >
+                <div className="w-[50%]">
+                    <img
+                      src={item.img}
+                      className="w-full h-[350px]"
+                      alt="Blue Jeans Jacket"
+                    />
+                </div>
 
-                  <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                    <p>
-                      <strong>{item.title}</strong>
-                    </p>
+                <div className="flex flex-col items-center justify-start pt-8 w-[50%]">
+                  <div>
+                    <h2 className="font-bold text-xl">{item.title}</h2>
+                  </div>
+                  <div>
                     <button
                       type="button"
                       data-mdb-button-init
                       data-mdb-ripple-init
-                      className="btn btn-primary btn-sm me-1 mb-2"
+                      className=""
                       data-mdb-tooltip-init
                       title="Remove item"
-                      onClick={()=> dispatch(removeItem(item.id))}
+                      onClick={() => dispatch(removeItem(item.id))}
+                    ><MdDelete /></button>
+                  </div>
+
+                <div className="">
+                  <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
+                    <button
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      className=""
+                      onClick={() => dispatch(decreaseQuantity(item.id))}
                     >
-                      <i className="fas fa-trash"></i>
+                     <TiMinus />
+                    </button>
+
+                    <div data-mdb-input-init className="form-outline">
+                      <input
+                        id="form1"
+                        min="0"
+                        name="quantity"
+                        value={item.quantity}
+                        type="number"
+                        className=""
+                      />
+                      <label className="form-label" htmlFor="form1">
+                        Quantity
+                      </label>
+                    </div>
+
+                    <button
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      className=""
+                      onClick={() => dispatch(increaseQuantity(item.id))}
+                    >
+                      <FaPlus />
                     </button>
                   </div>
-
-                  <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    <div
-                      className="d-flex mb-4"
-                      style={{ maxWidth: "300px" }}
-                    >
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        className="btn btn-primary px-3 me-2"
-                        onClick={()=>dispatch(decreaseQuantity(item.id))}
-                      >
-                        <i className="fas fa-minus"></i>
-                      </button>
-
-                      <div data-mdb-input-init className="form-outline">
-                        <input
-                          id="form1"
-                          min="0"
-                          name="quantity"
-                          value={item.quantity}
-                          type="number"
-                          className="form-control"
-                        />
-                        <label className="form-label" htmlFor="form1">
-                          Quantity
-                        </label>
-                      </div>
-
-                      <button
-                        data-mdb-button-init
-                        data-mdb-ripple-init
-                        className="btn btn-primary px-3 ms-2"
-                        onClick={()=>dispatch(increaseQuantity(item.id))}
-                      >
-                        <i className="fas fa-plus"></i>
-                      </button>
-                    </div>
-                    <p className="text-start text-md-center">
-                      <strong>{item.price}</strong>
-                    </p>
-                  </div>
+                  <p className="">
+                    <strong>{item.price}</strong>
+                  </p>
                 </div>
-              ))}
+                
+                </div>
+              </div>
+            ))}
 
-              <hr className="my-4" />
-            </div>
-          </div>
-          <div className="card mb-4 mb-lg-0">
-            <div className="card-body">
-              <p>
-                <strong>We accept</strong>
-              </p>
-              <img
-                className="me-2"
-                width="45px"
-                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-                alt="Visa"
-              />
-              <img
-                className="me-2"
-                width="45px"
-                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-                alt="American Express"
-              />
-              <img
-                className="me-2"
-                width="45px"
-                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-                alt="Mastercard"
-              />
-              <img
-                className="me-2"
-                width="45px"
-                src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
-                alt="PayPal acceptance mark"
-              />
-            </div>
+            <hr className="" />
           </div>
         </div>
-        <div className="col-md-4">
-          <div className="card mb-4">
-            <div className="card-header py-3">
-              <h5 className="mb-0">Summary</h5>
+        <div className="w-[50%]">
+          <div className="">
+            <div className="">
+              <h5 className="">Summary</h5>
             </div>
-            <div className="card-body">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+            <div className="">
+              <ul className="">
+                <li className="">
                   Total Quantity
                   <span>{totalQuantity}</span>
                 </li>
-                <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <li className="">
                   <div>
                     <strong>Total amount</strong>
                   </div>
@@ -164,7 +128,7 @@ export default function Cartpage() {
                 type="button"
                 data-mdb-button-init
                 data-mdb-ripple-init
-                className="btn btn-primary btn-lg btn-block"
+                className=""
               >
                 Go to checkout
               </button>
@@ -172,7 +136,6 @@ export default function Cartpage() {
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  )
+    </section>
+  );
 }
