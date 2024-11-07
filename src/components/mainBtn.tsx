@@ -34,7 +34,7 @@ export default function mainBtn({
   paddingSmall,
   rounded,
   semiBold,
-  backgroundColor = "bg-yellow-500",
+  backgroundColor = "bg-blue-800",
   fontSize,
   width,
   transitionEffects,
@@ -48,7 +48,7 @@ export default function mainBtn({
 }: MainButtonProps) {
   const buttonClasses = `
     ${backgroundColor}
-    ${large ? "transition-transform duration-500 text-white hover:scale-105":"hover:bg-blue-500 text-sm px-3 py-3 text-white bg-blue-800"}
+    ${large ? "transition-transform duration-500 text-white hover:scale-105":"hover:bg-blue-500 text-sm px-3 py-3 text-white"}
     ${color}
     ${paddingSmall ? "px-6 py-3" : "px-12 py-3"}
     ${fontSize === "regular" ? "text-sm" : "text-lg"}
