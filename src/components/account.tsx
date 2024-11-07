@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, editCredentials} from "@/lib/store/features/userslice/authslice";
+import {
+  auth,
+  editCredentials,
+} from "@/lib/store/features/userslice/authslice";
+import MainBtn from "../components/mainBtn";
 
 export default function Loginform() {
   const dispatch = useDispatch();
@@ -18,12 +21,15 @@ export default function Loginform() {
     setEdit(!edit);
   };
   const handlesave = () => {
-    if(email !== usercredentials.email || password !== usercredentials.password){
-        dispatch(editCredentials({email,password}))
-        setEdit(!edit)
-        return alert("Account Updated Successfully")
+    if (
+      email !== usercredentials.email ||
+      password !== usercredentials.password
+    ) {
+      dispatch(editCredentials({ email, password }));
+      setEdit(!edit);
+      return alert("Account Updated Successfully");
     }
-    return alert("Please Edit SomeThing")
+    return alert("Please Edit SomeThing");
   };
   return (
     <div className="flex items-center justify-center h-screen bg-gray-200 ">
@@ -56,24 +62,33 @@ export default function Loginform() {
           />
           <div className="py-3 flex items-end justify-end mt-2">
             {edit && (
-              <Button
-                className="rounded-none px-4 bg-gradient-to-l from-blue-400 to-blue-900"
-                onClick={handleclick}
+              <MainBtn
+                handleClick={handleclick}
+                backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
+                fontSize="regular"
+                rounded
               >
                 Edit
-              </Button>
+              </MainBtn>
             )}
             {!edit && (
               <div className="flex space-x-2">
-                <Button variant="destructive" onClick={handleclick}>
-                  Cancel
-                </Button>
-                <Button
-                  className="rounded-md px-4 bg-gradient-to-l from-blue-400 to-blue-900"
-                  onClick={handlesave}
+                <MainBtn
+                  handleClick={handleclick}
+                  backgroundColor="bg-red-600 hover:bg-red-800"
+                  fontSize="regular"
+                  rounded
                 >
                   Save
-                </Button>
+                </MainBtn>
+                <MainBtn
+                  handleClick={handlesave}
+                  backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
+                  fontSize="regular"
+                  rounded
+                >
+                  Save
+                </MainBtn>
               </div>
             )}
           </div>

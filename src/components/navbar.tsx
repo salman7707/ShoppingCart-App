@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { auth, clearCredentials } from "@/lib/store/features/userslice/authslice";
 import { useRouter } from "next/navigation";
+import MainBtn from "../components/mainBtn"
 
 export default function App() {
   const Router = useRouter();
@@ -31,20 +32,30 @@ export default function App() {
         <div>
           {!userLogin && (
             <Link href={"/login"}>
-              <Button variant="mine" size="mine">
-                Login
-              </Button>
+              <MainBtn
+              >
+              Login
+              </MainBtn>
             </Link>
           )}
           {userLogin && (
             <div className="flex items-center space-x-2 justify-between">
-              <h3 className="text-white">Welcome, {usercredentials.email}</h3>
-              <Button variant="mine" size="mine" className="" onClick={()=>dispatch(clearCredentials())&&window.location.reload()}>
-                Logout
-              </Button>
-              <Button variant="mine" size="mine" onClick={()=>Router.push("/account")}>
-                Account
-              </Button>
+              <h3 className="text-white font-medium">Welcome, {usercredentials.email}</h3>
+              <MainBtn
+                handleClick={() => {
+                  dispatch(clearCredentials());
+                  window.location.reload();
+                }}
+              >
+               LogOut
+              </MainBtn>
+              <MainBtn
+                handleClick={
+                  ()=>Router.push("/account")
+                }
+              >
+               Account
+              </MainBtn>
               <Button variant="cartbtn" size="mine" onClick={()=>Router.push("/cart")}>
                 Cart({totalQuantity})
               </Button>

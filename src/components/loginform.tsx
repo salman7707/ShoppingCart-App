@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/lib/store/features/userslice/authslice";
 import { useRouter } from "next/navigation";
+import MainBtn from "../components/mainBtn";
 
 export default function Loginform() {
   const router = useRouter();
@@ -18,12 +18,16 @@ export default function Loginform() {
     }
     dispatch(setCredentials({ email, password }));
 
-    router.push("/")
+    router.push("/");
   }
   return (
     <div className="flex items-center justify-center h-screen bg-gray-200 ">
       <div className="flex flex-col p-6 items-center rounded-2xl zoom-in-0 hover:zoom-in-105  justify-center w-full bg-white max-w-96">
-        <h2 className="text-3xl font-semibold item-center">Welcome Back</h2>
+        <div className="bg-gradient-to-l from-blue-400 to-blue-900 py-10 w-full">
+          <h2 className="text-3xl font-semibold text-white text-center">
+            welcome Back
+          </h2>
+        </div>
         <div className="py-6 w-full">
           <div className="w-full flex items-start mb-2">
             <Label className="text-lg text-gray-600">Email</Label>
@@ -44,9 +48,12 @@ export default function Loginform() {
             onChange={(e) => setpassword(e.target.value)}
           />
           <div className="py-3">
-            <Button className="w-full" onClick={LoginData}>
-              Login
-            </Button>
+            
+            <MainBtn
+            handleClick={LoginData}
+             backgroundColor="bg-gradient-to-l from-blue-800 to-blue-300"
+            width="w-full" fontSize="regular"
+            rounded>Login</MainBtn>
           </div>
         </div>
       </div>

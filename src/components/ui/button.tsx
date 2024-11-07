@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         mine: "border rounded-lg text-white hover:text-blue-600 hover:bg-white",
-        cartbtn: "rounded-lg text-white hover:text-gray-600",
+        cartbtn: "rounded-lg text-white hover:text-blue-600 text-lg ",
       },
       size: {
         default: "h-9 px-4 py-2",
