@@ -34,7 +34,7 @@ export default function App() {
             <Link href={"/login"}>
               <MainBtn
               paddingSmall
-              backgroundColor="bg-blue-800"
+              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
               >
               Login
               </MainBtn>
@@ -45,7 +45,7 @@ export default function App() {
               <h3 className="text-white font-medium">Welcome, {usercredentials.email}</h3>
               <MainBtn
               paddingSmall
-              backgroundColor="bg-blue-800"
+              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
                 handleClick={() => {
                   dispatch(clearCredentials());
                   window.location.reload();
@@ -54,7 +54,7 @@ export default function App() {
                LogOut
               </MainBtn>
               <MainBtn
-              backgroundColor="bg-blue-800"
+              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
               paddingSmall
                 handleClick={
                   ()=>Router.push("/account")
