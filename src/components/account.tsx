@@ -65,7 +65,7 @@ export default function Loginform() {
               <MainBtn
                 handleClick={handleclick}
                 backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
-                fontSize="regular"
+                paddingSmall
                 rounded
               >
                 Edit
@@ -75,16 +75,16 @@ export default function Loginform() {
               <div className="flex space-x-2">
                 <MainBtn
                   handleClick={handleclick}
+                  paddingSmall
                   backgroundColor="bg-red-600 hover:bg-red-800"
-                  fontSize="regular"
                   rounded
                 >
-                  Save
+                  Cancel
                 </MainBtn>
                 <MainBtn
+                paddingSmall
                   handleClick={handlesave}
                   backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
-                  fontSize="regular"
                   rounded
                 >
                   Save

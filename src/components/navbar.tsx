@@ -33,6 +33,7 @@ export default function App() {
           {!userLogin && (
             <Link href={"/login"}>
               <MainBtn
+              paddingSmall
               backgroundColor="bg-blue-800"
               >
               Login
@@ -43,6 +44,7 @@ export default function App() {
             <div className="flex items-center space-x-2 justify-between">
               <h3 className="text-white font-medium">Welcome, {usercredentials.email}</h3>
               <MainBtn
+              paddingSmall
               backgroundColor="bg-blue-800"
                 handleClick={() => {
                   dispatch(clearCredentials());
@@ -53,6 +55,7 @@ export default function App() {
               </MainBtn>
               <MainBtn
               backgroundColor="bg-blue-800"
+              paddingSmall
                 handleClick={
                   ()=>Router.push("/account")
                 }

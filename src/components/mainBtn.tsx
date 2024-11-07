@@ -48,7 +48,7 @@ export default function mainBtn({
 }: MainButtonProps) {
   const buttonClasses = `
     ${backgroundColor}
-    ${large ? "transition-transform duration-500 text-white hover:scale-105":"hover:bg-blue-500 text-sm px-3 py-3 text-white"}
+    ${large ? "transition-transform duration-500 text-white hover:scale-105":"hover:bg-blue-500 text-sm  py-3 text-white"}
     ${color}
     ${paddingSmall ? "px-6 py-3" : "px-12 py-3"}
     ${fontSize === "regular" ? "text-sm" : "text-lg"}
