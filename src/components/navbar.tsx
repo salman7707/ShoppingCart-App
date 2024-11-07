@@ -19,7 +19,7 @@ export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cart]);
+  }, [cart,dispatch]);
   return (
     <div className="w-full h-16 bg-gradient-to-l from-blue-400 to-blue-900 px-6 flex items-center">
       <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
@@ -42,7 +42,7 @@ export default function App() {
               <Button variant="mine" size="mine" className="" onClick={()=>dispatch(clearCredentials())}>
                 Logout
               </Button>
-              <Button variant="mine" size="mine">
+              <Button variant="mine" size="mine" onClick={()=>Router.push("/account")}>
                 Account
               </Button>
               <Button variant="cartbtn" size="mine" onClick={()=>Router.push("/cart")}>

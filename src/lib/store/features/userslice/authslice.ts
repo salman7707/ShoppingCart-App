@@ -27,8 +27,12 @@ export const authSlice = createSlice({
             state.usercredentials = { email: '', password: '' };
             state.userLogin = false;
         },
+        editCredentials:(state,action) => {
+           state.usercredentials = action.payload;
+           state.userLogin = true;
+        }
     }
 })
 
-export const { setCredentials, clearCredentials } = authSlice.actions;
+export const { setCredentials, clearCredentials, editCredentials } = authSlice.actions;
 export default authSlice.reducer;
