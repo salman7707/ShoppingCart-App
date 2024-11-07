@@ -39,7 +39,7 @@ export default function App() {
           {userLogin && (
             <div className="flex items-center space-x-2 justify-between">
               <h3 className="text-white">Welcome, {usercredentials.email}</h3>
-              <Button variant="mine" size="mine" className="" onClick={()=>dispatch(clearCredentials())}>
+              <Button variant="mine" size="mine" className="" onClick={()=>dispatch(clearCredentials())&&window.location.reload()}>
                 Logout
               </Button>
               <Button variant="mine" size="mine" onClick={()=>Router.push("/account")}>
