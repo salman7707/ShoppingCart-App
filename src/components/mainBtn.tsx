@@ -1,80 +1,62 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
-interface ButtonProps {
-  backgroundColor?: string;
-  color?: string;
-  paddingSmall?: boolean;
-  fontSize?: "regular" | "large";
-  semiBold?: boolean;
-  rounded?: boolean;
-  transitionEffects?: string;
-  isValid?: boolean;
-  loading?: boolean;
-  width?: string;
-  isNavButton?: boolean;
-  marginTop?: string;
-  marginBottom?: string;
-  dotted?: boolean;
-  borderRadius?: string;
-  flex?: boolean;
-  borderColor?: string;
-  large?:boolean;
-}
-interface MainButtonProps extends ButtonProps {
+interface MainButtonProps {
   children: ReactNode;
   handleClick?: () => void;
-  type?: "button" | "submit" | "reset";
+  background?: string;
+  flex?: string;
+  border?: string;
+  width?:string;
+  height?:string;
+  variant?:string
+  effects?: string;
+  padding?: string;
+  margin?: string;
+  size?: "small" | "large";
+  putDefaultClass?: string;
 }
 
-export default function mainBtn({
-  children,
-  handleClick,
-  isValid = true,
-  loading = false,
-  paddingSmall,
-  rounded,
-  semiBold,
-  backgroundColor = "bg-blue-800",
-  fontSize,
-  width,
-  transitionEffects,
-  color = "text-dark-blue",
-  type = "button",
-  marginTop,
-  marginBottom,
-  borderRadius,
+export default function MainBtn({
+  background,
   flex,
-  large
+  width,
+  height,
+  border,
+  variant="",
+  effects,
+  padding,
+  margin,
+  size="small",
+  putDefaultClass,
+  handleClick,
+  children,
 }: MainButtonProps) {
-  const buttonClasses = `
-    ${backgroundColor}
-    ${large ? "transition-transform duration-500 text-white hover:scale-105":"hover:bg-blue-500 text-sm  py-3 text-white"}
-    ${color}
-    ${paddingSmall ? "px-6 py-3" : "px-12 py-3"}
-    ${fontSize === "regular" ? "text-sm" : "text-lg"}
-    ${semiBold ? "font-semibold" : "font-bold"}
-    ${
-        transitionEffects
-    }
-    ${rounded ? "rounded-lg" : ""}
-    ${borderRadius ? borderRadius : ""}
-    ${
-      !isValid || loading
-        ? "opacity-50 cursor-not-allowed"
-        : "hover:shadow-lg hover:translate-y-[-2px]"
-    }
-    ${width || ""}
-    ${marginTop || ""}
-    ${marginBottom || ""}
-    ${flex ? "flex" : ""}
-    flex gap-2 justify-center items-center transition-all duration-500
-    `;
+  const btnClassess = {
+    background,
+    width,
+    height,
+    flex,
+    border,
+    effects,
+    padding,
+    margin,
+    variant,
+    size:size==="large"? "btn":"btnSmall",
+    putDefaultClass,
+  };
+  const [btn, setbtn] = useState(false);
+
+  function handlestate() {
+    setbtn(!btn);
+  }
+
   return (
     <button
-      onClick={handleClick}
-      disabled={!isValid || loading}
-      className={buttonClasses}
-      type={type}
+      onClick={() => {
+        handlestate();
+        handleClick?.();
+      }}
+      className={`${btnClassess} ${ btn ? (size === "large"?"btnafterclicklarge":( variant === "red"?"btnafterclicksmall2":"btnafterclicksmall")) :  (size==="small" ? (variant ==="red"? "btnSmall2":"btnSmall") : "btn")} `}
     >
       {children}
     </button>

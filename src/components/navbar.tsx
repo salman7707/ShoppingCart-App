@@ -5,9 +5,12 @@ import { useEffect } from "react";
 import { getCartTotal } from "@/lib/store/features/cartslice/cartslice";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { auth, clearCredentials } from "@/lib/store/features/userslice/authslice";
+import {
+  auth,
+  clearCredentials,
+} from "@/lib/store/features/userslice/authslice";
 import { useRouter } from "next/navigation";
-import MainBtn from "../components/mainBtn"
+import MainBtn from "../components/mainBtn";
 
 export default function App() {
   const Router = useRouter();
@@ -20,49 +23,51 @@ export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cart,dispatch]);
+  }, [cart, dispatch]);
   return (
-    <div className="w-full h-16 bg-gradient-to-l from-blue-400 to-blue-900 px-6 flex items-center">
+    <div className="w-full h-16 bg-gradient-to-l from-blue-400 to-blue-900  px-6 flex items-center">
       <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
         <div>
           <h2 className="text-3xl font-bold text-white">
             <Link href={"/"}>My Shop</Link>
           </h2>
         </div>
-        <div>
+        <div className="flex space-x-3">
+
           {!userLogin && (
             <Link href={"/login"}>
               <MainBtn
-              paddingSmall
-              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
+              size="small"
               >
-              Login
+                Login
               </MainBtn>
             </Link>
           )}
           {userLogin && (
             <div className="flex items-center space-x-2 justify-between">
-              <h3 className="text-white font-medium">Welcome, {usercredentials.email}</h3>
+              <h3 className="text-white font-medium">
+                Welcome, {usercredentials.email}
+              </h3>
               <MainBtn
-              paddingSmall
-              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
+              size="small"
                 handleClick={() => {
                   dispatch(clearCredentials());
                   window.location.reload();
                 }}
               >
-               LogOut
+                LogOut
               </MainBtn>
               <MainBtn
-              backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800"
-              paddingSmall
-                handleClick={
-                  ()=>Router.push("/account")
-                }
+              size="small"
+                handleClick={() => Router.push("/account")}
               >
-               Account
+                Account
               </MainBtn>
-              <Button variant="cartbtn" size="mine" onClick={()=>Router.push("/cart")}>
+              <Button
+                variant="cartbtn"
+                size="mine"
+                onClick={() => Router.push("/cart")}
+              >
                 Cart({totalQuantity})
               </Button>
             </div>

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { auth } from "@/lib/store/features/userslice/authslice";
 import product from "./types/product";
-import MainBtn from "../components/mainBtn"
+import MainBtn from "../components/mainBtn";
 
 export default function App() {
   const item = useSelector(
@@ -33,13 +33,18 @@ export default function App() {
   };
   return (
     <div className="m-3 py-10">
-      <h2 className="text-4xl font-semibold text-center text-black  bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent">
+      <h2 className="text-4xl font-semibold text-center text-black  bg-gradient-to-r from-blue-300 to-blue-900 bg-clip-text text-transparent" 
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      >
         Our Products
       </h2>
       <div className="flex flex-wrap">
         {item.map((data: Product, key: number) => (
-          <div key={key} className="px-4 mx-auto py-4 w-[441px]">
-            <Card>
+          <div key={key}   className="px-4 mx-auto py-4 w-[441px]">
+            <Card data-aos="zoom-in"
+             data-aos-duration="650"
+             >
               <CardHeader>
                 <CardTitle className="">{data.title}</CardTitle>
                 <CardDescription></CardDescription>
@@ -47,22 +52,17 @@ export default function App() {
               <div className="w-[400px] h-[400px] p-4">
                 <img
                   src={data.img}
-                  className="scale-100 transition hover:duration-700 hover:scale-105"
+                  className="scale-100 transition hover:duration-100 hover:scale-105"
                 />
               </div>
               <CardContent>
                 <p className="pt-3 text-center text-lg">{data.price}</p>
               </CardContent>
               <CardFooter>
-                
                 <MainBtn
-                  backgroundColor="bg-gradient-to-l  from-blue-400 to-blue-800 hover:gb-gradient-to-r hover:from-blue-800 hover:to-blue-400 "
-                  color="text-white"
-                  paddingSmall
-                  fontSize="large"
-                  rounded
+                  background="text-white"
+                  size="large"
                   width="w-full"
-                  transitionEffects=" transition-transform duration-500 hover:scale-105"
                   handleClick={() => addtocard(data)}
                 >
                   Click Me

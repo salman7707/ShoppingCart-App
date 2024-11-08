@@ -48,12 +48,13 @@ export default function Loginform() {
             onChange={(e) => setpassword(e.target.value)}
           />
           <div className="py-3">
-            
             <MainBtn
-            handleClick={LoginData}
-             backgroundColor="bg-gradient-to-l from-blue-800 to-blue-300"
-            width="w-full" fontSize="regular"
-            rounded>Login</MainBtn>
+              handleClick={LoginData}
+              background="bg-gradient-to-l from-blue-800 to-blue-300"
+              width="w-full"
+            >
+              Login
+            </MainBtn>
           </div>
         </div>
       </div>

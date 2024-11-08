@@ -1,13 +1,22 @@
-"use client"
+"use client";
 import store from "@/lib/store/store";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { Provider } from "react-redux";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
-interface storeProvideProps {
-    children:ReactNode;
+interface StoreProvideProps {
+  children: ReactNode;
 }
 
-const storeProvider : React.FC<storeProvideProps> = ({ children }) => {
+const StoreProvider: React.FC<StoreProvideProps> = ({ children }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
   return <Provider store={store}>{children}</Provider>;
 };
-export default storeProvider;
+export default StoreProvider;

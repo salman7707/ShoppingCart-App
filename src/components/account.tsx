@@ -62,31 +62,18 @@ export default function Loginform() {
           />
           <div className="py-3 flex items-end justify-end mt-2">
             {edit && (
-              <MainBtn
-                handleClick={handleclick}
-                backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
-                paddingSmall
-                rounded
-              >
-                Edit
-              </MainBtn>
+              <div className="flex justify-end">
+                <MainBtn size="small" handleClick={handleclick}>
+                  Edit
+                </MainBtn>
+              </div>
             )}
             {!edit && (
               <div className="flex space-x-2">
-                <MainBtn
-                  handleClick={handleclick}
-                  paddingSmall
-                  backgroundColor="bg-red-600 hover:bg-red-800"
-                  rounded
-                >
+                <MainBtn variant="red" size="small" handleClick={handleclick}>
                   Cancel
                 </MainBtn>
-                <MainBtn
-                paddingSmall
-                  handleClick={handlesave}
-                  backgroundColor="bg-gradient-to-l from-blue-400 to-blue-900"
-                  rounded
-                >
+                <MainBtn size="small" handleClick={handlesave}>
                   Save
                 </MainBtn>
               </div>

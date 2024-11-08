@@ -71,3 +71,117 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.btn {
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  padding: 30px 10px;
+  height: 30px;
+  background-color: rgb(59, 59, 218);
+  border-radius: 1000px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnSmall2 {
+  color: white;
+  font-weight: 700;
+  padding: 20px 20px;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(212, 16, 16);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btnSmall {
+  color: white;
+  font-weight: 700;
+  padding: 20px 20px;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(59, 59, 218);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  border-radius: 1000px;
+  width: 102.5%;
+  height: 105%;
+  background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.btnSmall::after {
+  content: "";
+  position: absolute;
+  border-radius: 10px;
+  width: 102%;
+  height: 103%;
+  background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.btnSmall:hover {
+  z-index: 0;
+}
+.btnSmall2:hover {
+  background-color: rgb(94, 8, 8);
+}
+
+.btn:hover {
+  z-index: 0;
+}
+
+.btnafterclicksmall {
+  padding: 8px 20px;
+  color: white;
+  width: 100%;
+  font-weight: 700;
+  background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnafterclicksmall2 {
+  padding: 8px 20px;
+  color: white;
+  width: 100%;
+  font-weight: 700;
+  background-image: rgb(94, 8, 8);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnafterclicklarge {
+  padding: 18px 10px;
+  color: white;
+  width: 100%;
+  font-weight: 700;
+  background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+  border-radius: 1000px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
